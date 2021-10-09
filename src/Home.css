@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500&display=swap');
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    font-weight: 300;
+}
+
+ul{
+    list-style: none;
+}
+
+header{
+    width: 100vw;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 8px 8px -4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.menu-icons{
+    color: #141641;
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    z-index: 1500;
+    display: none;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    width: 95vw;
+}
+
+nav h1{
+    padding: 0;
+    margin: 0 2rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    color: #141641;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-list{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    align-items: right;
+}
+
+.nav-list li{
+    line-height: 2rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-list a{
+    display: block;
+    color: #141641;
+    padding: 0.2rem 1rem;
+    font-size: 0.97em;
+    transition: color 650ms;
+    font-weight: 400;
+}
+
+.fas{
+    padding: 0 0 0 0.5rem;
+}
+
+.vertical-center{
+    margin: 0;
+    position: absolute;
+    top: 120vh;
+    left: 35vw;
+}
+
+.button-container{
+    padding: 0.5rem 1rem;
+    background-color: #141641;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.button-container a{
+    color: #fff;
+}
+
+@media screen and (max-width: 991px){
+    .container h1{
+        padding: 0.5rem 0rem;
+    }
+    header{
+        width: 100vw;
+    }
+    .nav-list{
+        position: fixed;
+        top: 2.3rem;
+        left: 0;
+        height: 115vh;
+        width: 100vw;
+        display: none;
+        flex-direction: column;
+        align-items: initial;
+        background: #fff;
+        z-index: 1000;
+        margin-left: -2rem;
+        overflow-y: scroll;
+    }
+
+    .nav-list > li{
+        line-height: 3rem;
+        top: 1rem;
+    }
+
+    .menu-icons{
+        display: block;
+        position: absolute;
+    }
+
+    .fa-times{
+        display: none;
+    }
+
+    nav.active .fa-times{
+        display: block;
+        position: absolute;
+        margin: -1.2rem 0 0 -2rem;
+    }
+
+    nav.active .fa-bars{
+        display: none;
+    }
+
+    nav.active .nav-list{
+        display: flex;
+    }
+}
+
+.total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 65vh;
+}
+
+.container-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+.container-2 .card{
+    position: relative;
+    min-width: 320px;
+    height: 300px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+                inset -5px -5px 5px rgba(255, 255, 255, 0.5),
+                5px 5px 5px rgba(0, 0, 0, 0.05),
+                -5px -5px 5px rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    margin: 30px;
+}
+
+.container-2 .card .box{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #ebf5fc;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.container-2 .card .box .content{
+    padding: 20px;
+    text-align: center;
+}
+
+.container-2 .card .box .content .back{
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    font-size: 8em;
+    color: rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.container-2 .card .box .content .title{
+    font-size: 2.2em;
+    color: #777;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.container-2 .card .box .content .value{
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #777;
+    z-index: 1;
+    transition: 0.5s;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+.form-1 {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem 0 0 5rem;
+    width: 25vw;
+  }
+  
+  .form-inputs-1 {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  
+  .form-inputs-1 p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    color: #f00e0e;
+  }
+  
+  .form-input-1 {
+    display: block;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 15px;
+    height: 45px;
+    width: 100%;
+    border: 1px solid #9a9191;
+  }
+  
+  .form-input-1::placeholder {
+    color: #9a9191;
+    font-size: 12px;
+  }
+  
+  .form-input-btn-1 {
+    width: 50%;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 30px;
+    background: #141641;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .form-input-btn-1 button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    outline: none;
+    user-select: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form-input-login-1 {
+    font-size: 0.8rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    color: #141641;
+    width: 80%;
+    text-align: center;
+  }
+  
+  .form-input-login-1 a {
+    text-decoration: none;
+    color: #141641;
+    font-weight: 600;
+  }
