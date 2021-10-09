@@ -1,11 +1,30 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import Select from 'react-select';
+
+const options = [
+  { value: 'I Semester', label: 'I Semester' },
+  { value: 'II Semester', label: 'II Semester' },
+  { value: 'III Semester', label: 'III Semester' },
+  { value: 'IV Semester', label: 'IV Semester' },
+  { value: 'V Semester', label: 'V Semester' },
+  { value: 'VI Semester', label: 'VI Semester' },
+  { value: 'VII Semester', label: 'VII Semester' },
+  { value: 'VIII Semester', label: 'VIII Semester' },
+];
 
 function UploadFile() {
     const [values, setValues] = useState({
         email: "",
         password: "",
       });
+
+      const[selectedOption, setSelectedOption] = useState('');
+      const [value, setValue] = useState('');
+
+      const handleFiles = (e) => {
+        setValue(`${e.target.files[0].name}`);
+      }
 
       const handleChange = (e) => {
         const { name, value } = e.target;
@@ -15,26 +34,28 @@ function UploadFile() {
         });
       };
 
+      const handleChange1 = (selectedOption) =>{
+        setSelectedOption(selectedOption);
+      }
+
       const handleSubmit = (e) => {
         e.preventDefault();
       }
 
-    function openNav(){
-        const selectElement = (element) => document.querySelector(element);
-            selectElement('.menu-icons').addEventListener('click', () => {
-                selectElement('nav').classList.toggle('active');
-        });
-    }
+      const [open, setOpen] = useState(null);
+      function openNav(){
+          setOpen('active');
+      }
 
     return (
         <div>
             <header>
               <div className="container" >
-                <nav>
+                <nav className={open}>
                     <h1>Notes</h1>
-                    <div onClick={openNav} className="menu-icons">
-                        <i className="fas fa-bars"></i>
-                        <i className="fas fa-times"></i>
+                    <div className="menu-icons">
+                        <i onClick={openNav} className="fas fa-bars"></i>
+                        <i onClick={()=>setOpen(null)} className="fas fa-times"></i>
                     </div>
                     <ul className="nav-list">
                         <li>
@@ -59,6 +80,7 @@ function UploadFile() {
                     </nav>
                 </div>
             </header>
+            <div className='form-content-right-1'>
             <form className="form-1" onSubmit={handleSubmit} noValidate>
           <div className="form-inputs-1">
             <input
@@ -86,11 +108,28 @@ function UploadFile() {
               onChange={handleChange}
             ></input>
           </div>
-          <input type="file" name='fileupload' id='fileupload' />
+          <div className='form-inputs-1'>
+            <Select
+              value={selectedOption}
+              onChange={handleChange1}
+              options={options}
+              isSearchable
+              isMulti
+              className='tag-input'
+            />
+          </div>
+          <label className='custom-upload'>
+            Attach File
+            <input type="file" accept="application/pdf, application/ms-word, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name='fileupload' id='fileupload' onChange={handleFiles}/>
+            <i class="fas fa-paperclip"></i>
+            <div style={{marginTop: '0.5rem'}}>{value}</div>
+          </label>
           <div className="form-input-btn-1">
             <button type="submit">Upload File</button>
           </div>
         </form>
+        </div>
+            <img src="/img/upload.png" className="form-img-1" alt='Book'/>
         </div>
     )
 }

@@ -17,7 +17,7 @@ function Routes() {
                 <Route path="/ece" exact component={ECE} />
                 <Route path="/eee" exact component={EEE} />
                 <Route path="/mech" exact component={MECH} />
-                <Route path="/cse/subjectname" exact component={Subject} />
+                <Route path="/subjectname" exact component={Subject} />
                 <Route path="/uploadfile" exact component={UploadFile}/>
             </Switch>
         </BrowserRouter>

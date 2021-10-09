@@ -17,7 +17,7 @@ ul{
 
 header{
     width: 100vw;
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -83,6 +83,13 @@ nav h1{
     font-weight: 400;
 }
 
+
+.nav-list .invite{
+    background-color: #141641;
+    padding: 0.3rem 1rem;
+    color: #fff;
+}
+
 .fas{
     padding: 0 0 0 0.5rem;
 }
@@ -108,57 +115,6 @@ nav h1{
     color: #fff;
 }
 
-@media screen and (max-width: 991px){
-    .container h1{
-        padding: 0.5rem 0rem;
-    }
-    header{
-        width: 100vw;
-    }
-    .nav-list{
-        position: fixed;
-        top: 2.3rem;
-        left: 0;
-        height: 115vh;
-        width: 100vw;
-        display: none;
-        flex-direction: column;
-        align-items: initial;
-        background: #fff;
-        z-index: 1000;
-        margin-left: -2rem;
-        overflow-y: scroll;
-    }
-
-    .nav-list > li{
-        line-height: 3rem;
-        top: 1rem;
-    }
-
-    .menu-icons{
-        display: block;
-        position: absolute;
-    }
-
-    .fa-times{
-        display: none;
-    }
-
-    nav.active .fa-times{
-        display: block;
-        position: absolute;
-        margin: -1.2rem 0 0 -2rem;
-    }
-
-    nav.active .fa-bars{
-        display: none;
-    }
-
-    nav.active .nav-list{
-        display: flex;
-    }
-}
-
 .total{
     display: flex;
     justify-content: center;
@@ -172,7 +128,8 @@ nav h1{
     align-items: center;
     max-width: 1200px;
     flex-wrap: wrap;
-    padding: 40px 0;
+    padding: 40px 120px;
+    margin-top: 5rem;
 }
 
 .container-2 .card{
@@ -234,13 +191,22 @@ nav h1{
     cursor: pointer;
 }
 
+.form-img-1 {
+    width: 45vw;
+    height: 70vh;
+    position: absolute;
+    top: 50%;
+    right: -22.5%;
+    transform: translate(-50%, -50%);
+  }
+
 .form-1 {
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5rem 0 0 5rem;
+    margin: 15rem 0 0 5rem;
     width: 25vw;
   }
   
@@ -261,9 +227,12 @@ nav h1{
     padding-left: 10px;
     outline: none;
     border-radius: 15px;
-    height: 45px;
     width: 100%;
     border: 1px solid #9a9191;
+  }
+
+  .tag-input{
+      width: 110%;
   }
   
   .form-input-1::placeholder {
@@ -274,7 +243,7 @@ nav h1{
   .form-input-btn-1 {
     width: 50%;
     height: 50px;
-    margin-top: 10px;
+    margin: 1rem;
     border-radius: 30px;
     background: #141641;
     outline: none;
@@ -314,3 +283,105 @@ nav h1{
     color: #141641;
     font-weight: 600;
   }
+
+  
+  input[type="file"]{
+      display: none;
+  }
+
+  .custom-upload{
+      border-radius: 2px;
+      display: inline-block;
+      padding: 10px 12px;
+      cursor: pointer;
+      width: 50%;
+      height: 1rem;
+      color: #141641;
+      text-align: center;
+      margin: 1rem;
+      outline: none;
+  }
+
+  .fa-paperclip{
+      color: #141641;
+  }
+  
+@media screen and (max-width: 991px){
+    .container h1{
+        padding: 0.5rem 0rem;
+    }
+    header{
+        width: 100vw;
+    }
+    .nav-list{
+        position: fixed;
+        top: 2.3rem;
+        left: 0;
+        height: 115vh;
+        width: 100vw;
+        display: none;
+        flex-direction: column;
+        align-items: initial;
+        background: #fff;
+        z-index: 1000;
+        margin-left: -2rem;
+        overflow-y: scroll;
+    }
+
+    .nav-list > li{
+        line-height: 3rem;
+        top: 1rem;
+    }
+    
+    .nav-list .invite{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #141641;
+        padding: 0rem 0.5rem;
+        color: #fff;
+        text-align: center;
+        width: 90vw;
+        margin: 1rem 0;
+        border-radius: 2px;
+    }
+
+    .menu-icons{
+        display: block;
+        position: absolute;
+    }
+
+    .fa-times{
+        display: none;
+    }
+
+    nav.active .fa-times{
+        display: block;
+        position: absolute;
+        margin: -1.2rem 0 0 -2rem;
+    }
+
+    nav.active .fa-bars{
+        display: none;
+    }
+
+    nav.active .nav-list{
+        display: flex;
+    } 
+
+      .form-img-1{
+          display: none;
+      }
+  
+      .form-content-right-1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .form-1 {
+          width: 70vw;
+          margin: 35rem 0 0 -3rem;
+          height: 0;
+      }
+}
