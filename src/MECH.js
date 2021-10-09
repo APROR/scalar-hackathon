@@ -108,6 +108,10 @@ function MECH() {
                 </div>
                 </div>
             </div>
+            
+            <footer>
+                <div>&copy; Team APROR</div>
+            </footer>
         </div>
     )
 }

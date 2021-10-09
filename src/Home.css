@@ -305,6 +305,15 @@ nav h1{
   .fa-paperclip{
       color: #141641;
   }
+
+  footer{
+      width: 100%;
+      background-color: #141641;
+      height: 3rem;
+      color: #fff;
+      text-align: center;
+      line-height: 3rem;
+  }
   
 @media screen and (max-width: 991px){
     .container h1{
