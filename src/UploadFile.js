@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
@@ -21,9 +22,11 @@ function UploadFile() {
 
       const[selectedOption, setSelectedOption] = useState('');
       const [value, setValue] = useState('');
+      const [file, setFile] = useState('');
 
       const handleFiles = (e) => {
         setValue(`${e.target.files[0].name}`);
+        setFile(`${e.target.files[0]}`);
       }
 
       const handleChange = (e) => {
@@ -40,6 +43,26 @@ function UploadFile() {
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        var bodyFormData = new FormData();
+        bodyFormData.append('course_name', e.target.course);
+        bodyFormData.append('subjectId', e.target.subject);
+        bodyFormData.append('tags', e.target.tags);
+        bodyFormData.append('file', file[0], value);
+        console.log(file[0], value);
+        Axios({
+          method: "post",
+          url: `${process.env.REACT_APP_BACKEND_URL}/upload`,
+          data: bodyFormData,
+          headers: { "Content-Type": 'multipart/form-data' },
+        })
+        .then(res => {
+          if(res.status === 200){
+            console.log("Uploaded Successfully")
+          }
+          else{
+            console.log("Failed to upload")
+          }
+        })
       }
 
       const [open, setOpen] = useState(null);
@@ -111,6 +134,7 @@ function UploadFile() {
           <div className='form-inputs-1'>
             <Select
               value={selectedOption}
+              name="tags"
               onChange={handleChange1}
               options={options}
               isSearchable
@@ -120,7 +144,7 @@ function UploadFile() {
           </div>
           <label className='custom-upload'>
             Attach File
-            <input type="file" accept="application/pdf, application/ms-word, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name='fileupload' id='fileupload' onChange={handleFiles}/>
+            <input type="file" name="files" accept="application/pdf, application/ms-word, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name='fileupload' id='fileupload' onChange={handleFiles}/>
             <i class="fas fa-paperclip"></i>
             <div style={{marginTop: '0.5rem'}}>{value}</div>
           </label>

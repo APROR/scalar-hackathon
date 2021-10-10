@@ -59,6 +59,7 @@ nav h1{
     letter-spacing: 0.3rem;
     font-weight: 500;
     cursor: pointer;
+    user-select: none;
 }
 
 .nav-list{
@@ -88,6 +89,47 @@ nav h1{
     background-color: #141641;
     padding: 0.3rem 1rem;
     color: #fff;
+}
+
+a::before{
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 4px;
+    background: #141641;
+    left: 50%;
+    bottom: -8px;
+    border-radius: 5px;
+}
+
+li:hover a::before{
+    width: 100%;
+    left: 0;
+    transition: .5s all;
+}
+
+a{
+    transition: .5s;
+}
+
+ul:hover a{
+    color: rgb(211, 211, 211);
+}
+
+ul:hover a:hover{
+    color: #141641;
+}
+
+ul:hover .no-color a:hover{
+    color: #fff;
+}
+
+.no-color:hover a::before{
+    height: 0px;
+    left: 0%;
+    bottom: 0px;
+    width: 0;
+    transition: none;
 }
 
 .fas{
@@ -313,6 +355,10 @@ nav h1{
       color: #fff;
       text-align: center;
       line-height: 3rem;
+      pointer-events: none;
+      user-select: none;
+      position: fixed;
+      bottom: 0;
   }
   
 @media screen and (max-width: 991px){
@@ -377,6 +423,19 @@ nav h1{
     nav.active .nav-list{
         display: flex;
     } 
+    
+
+    ul:hover a{
+        color: #141641;
+    }
+
+    li:hover a::before{
+        height: 0px;
+        left: 0%;
+        bottom: 0px;
+        width: 0;
+        transition: none;
+    }
 
       .form-img-1{
           display: none;

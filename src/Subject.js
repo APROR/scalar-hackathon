@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import './Home.css'
 import StarRatings from 'react-star-ratings';
+import Axios from 'axios';
 
 function Subject(){
     const [rating, setrating] = useState(0);
+    const [files, setFiles] = useState(0);
     
     function openNav(){
         const selectElement = (element) => document.querySelector(element);
@@ -17,6 +19,24 @@ function Subject(){
         setrating(newRating);
       }
 
+    function downloadContent(id){
+        window.location.href=`${process.env.REACT_APP_BACKEND_URL}/files/${id}`
+    }
+    useEffect(() => {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/subject/files`,{
+            params:{
+                subject_id:window.location.pathname.split("/")[2]
+            }
+        })
+        .then(res => {
+            if(res.status === 200){
+                setFiles(res.data.filter(file=>file.subjectId===window.location.pathname.split("/")[2]));
+            }
+        })
+       // window.location.href=`${process.env.REACT_APP_BACKEND_URL}/files/e7c75953-1d67-4ed2-96d7-a783e2c31313`
+    }, [])
+
+
     return (
         <div>
             <header>
@@ -28,7 +48,7 @@ function Subject(){
                         <i className="fas fa-times"></i>
                     </div>
                     <ul className="nav-list">
-                        <li>
+                        <li className='no-color'>
                             <Link to="/">CSE</Link>
                         </li>
                         <li>
@@ -51,25 +71,29 @@ function Subject(){
                 </div>
             </header>
             <div className='container-2'>
-                    <div className="card">
-                <div className="box">
-                    <div className="content">
-                    <h3 className="title">Unit - 1</h3>
-                    <p className="value">
-                    <StarRatings
-                        rating={rating}
-                        starRatedColor="red"
-                        changeRating={changeRating}
-                        numberOfStars={5}
-                        name='rating'
-                        starDimension="30px"
-                        starSpacing="5px"
-                    />
-                    </p>
-                    </div>
-                </div>
-                </div>
-                <div className="card">
+               {Array.isArray(files)&&files.map(function(file){
+                   return(
+                    <div className="card" onClick={()=>downloadContent(file.id)}>
+                        <div className="box">
+                        <div className="content">
+                        <h3 className="title">{file.name}</h3>
+                        <p className="value">
+                        <StarRatings
+                            rating={rating}
+                            starRatedColor="red"
+                            changeRating={changeRating}
+                            numberOfStars={5}
+                            name='rating'
+                            starDimension="30px"
+                            starSpacing="5px"
+                        />
+                        </p>
+                        </div>
+                        </div>
+                        </div>
+                   );
+               })}
+                {/*<div className="card">
                 <div className="box">
                     <div className="content">
                     <h3 className="title">Unit - 2</h3>
@@ -108,7 +132,7 @@ function Subject(){
                     </p>
                     </div>
                 </div>
-                </div>
+                </div>*/}
             </div>
             
             <footer>
