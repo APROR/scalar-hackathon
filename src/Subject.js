@@ -42,7 +42,7 @@ function Subject(){
             <header>
               <div className="container" >
                 <nav>
-                    <h1>Notes</h1>
+                    <h1>OneNotes4All</h1>
                     <div onClick={openNav} className="menu-icons">
                         <i className="fas fa-bars"></i>
                         <i className="fas fa-times"></i>

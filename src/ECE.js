@@ -24,7 +24,7 @@ function ECE() {
             <header>
               <div className="container" >
                 <nav className={open}>
-                    <h1>Notes</h1>
+                    <h1>OneNotes4All</h1>
                     <div className="menu-icons">
                         <i onClick={openNav} className="fas fa-bars"></i>
                         <i onClick={()=>setOpen(null)} className="fas fa-times"></i>
