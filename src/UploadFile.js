@@ -48,7 +48,6 @@ function UploadFile() {
         bodyFormData.append('subjectId', e.target.subject);
         bodyFormData.append('tags', e.target.tags);
         bodyFormData.append('file', file[0], value);
-        console.log(file[0], value);
         Axios({
           method: "post",
           url: `${process.env.REACT_APP_BACKEND_URL}/upload`,
